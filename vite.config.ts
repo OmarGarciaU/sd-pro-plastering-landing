@@ -5,8 +5,12 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/sd-pro-plastering-landing' : '/',
+  server: {
+    host: "::",
+    port: 8080,
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  base: "/sd-pro-plastering-landing",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
